@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+  
+}
+
+.game-board {
+    flex: 1;
+    position: relative;
+    height:600px;
+    width: 600px;
+    background-image: url(images/road.png);
+    background-position: center;
+}
+/* 
+.score {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    height: 50px;
+    width: 100px;
+    background-color: aqua;
+
+} */
+

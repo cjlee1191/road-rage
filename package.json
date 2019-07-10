@@ -1,0 +1,24 @@
+{
+  "name": "road-rage",
+  "version": "1.0.0",
+  "description": "project1-game",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjlee1191/road-rage.git"
+  },
+  "author": "Chris Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjlee1191/road-rage/issues"
+  },
+  "homepage": "https://github.com/cjlee1191/road-rage#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0"
+  }
+}
