@@ -31,8 +31,12 @@ animation: move 4s infinite;
 
 }
 
+.enemy2 {
+    animation: move 5s infinite;
+}
+
 @keyframes move {
-    0% {top: -10px;}
-    100% {top: 600px;}
+    0% {top: -100px;}
+    100%{top: 900px;}
 }
 
