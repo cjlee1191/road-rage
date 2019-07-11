@@ -16,15 +16,23 @@
 }
 .timer {
     flex; 1;
-    border: black solid 5px;
     position: relative;
     height: 100px;
     width: 150px;
-    background-color: orange;
-    opacity: .5;
+    opacity: 1;
     font-size: 24px;
     font-weight: 600;
+    color: white;
     padding: 5px;
 }
 
+.enemy {
+animation: move 4s infinite;
+
+}
+
+@keyframes move {
+    0% {top: -10px;}
+    100% {top: 600px;}
+}
 
