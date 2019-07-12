@@ -1,15 +1,19 @@
 /*eslint-disable*/
+
+
 const car = document.createElement('div');
 const coin = document.createElement('div');
 const blueCar = document.createElement('div')
 const greenCar = document.createElement('div')
+
 
 let carLocation = { x: 600, y: 500, height: '100px', width: '100px' };
 let coinLocation = { x: 0, y: 0, height: '100px', width: '100px' };
 let blueCarLocation = { x: 0, y: 0, height: '150px', width: '100px' };
 let greenCarLocation = { x: 0, y: 0, height: '150px', width: '100px' };
 
-const createCar = function () {
+const runGame = function() {
+  const createCar = function () {
   car.style.position = 'absolute';
   car.style.left = '600px';
   car.style.top = '500px';
@@ -17,6 +21,7 @@ const createCar = function () {
   car.style.height = '100px';
   car.style.backgroundImage = "url('images/car.png')";
   car.style.backgroundSize = '100%';
+  car.style.backgroundColor= "black";
   document.body.querySelector('.game-board').appendChild(car);
 };
 
@@ -27,33 +32,37 @@ const documentWidth = document.documentElement.clientWidth;
 
 
 
-  window.setInterval(() => {
+window.setInterval(() => {
   blueCar.style.position = 'absolute';
   blueCar.style.width = '100px';
   blueCar.style.height = '150px';
   blueCar.style.backgroundImage = "url('images/bluecar.png')"
   blueCar.classList.add('enemy')
   blueCar.style.backgroundSize = '100%';
+  blueCar.style.backgroundColor= "black";
   document.body.querySelector('.game-board').appendChild(blueCar);
   blueCarLocation.x = Math.floor(Math.random() * documentWidth) + 1;
+  blueCarLocation.y = Math.floor(Math.random() * documentHeight) + 1;
   blueCar.style.top = blueCarLocation.y + "px";
   blueCar.style.left = blueCarLocation.x + "px";
-  }, 2000)
- 
+}, 2000)
 
-    window.setInterval(() => {
-    greenCar.style.position = 'absolute';
-    greenCar.style.width = '100px';
-    greenCar.style.height = '175px';
-    greenCar.style.backgroundImage = "url('images/greencar.png')"
-    greenCar.classList.add('enemy2')
-    greenCar.style.backgroundSize = '100%';
-    document.body.querySelector('.game-board').appendChild(greenCar);
-    greenCarLocation.x = Math.floor(Math.random() * documentWidth) + 1;
-    greenCar.style.top = greenCarLocation.y + "px";
-    greenCar.style.left = greenCarLocation.x + "px";
-    }, 2000)
-    
+
+window.setInterval(() => {
+  greenCar.style.position = 'absolute';
+  greenCar.style.width = '100px';
+  greenCar.style.height = '175px';
+  greenCar.style.backgroundImage = "url('images/greencar.png')"
+  greenCar.classList.add('enemy2')
+  greenCar.style.backgroundSize = '100%';
+  greenCar.style.backgroundColor= "black";
+  document.body.querySelector('.game-board').appendChild(greenCar);
+  greenCarLocation.x = Math.floor(Math.random() * documentWidth) + 1;
+  greenCarLocation.y = Math.floor(Math.random() * documentHeight) + 1;
+  greenCar.style.top = greenCarLocation.y + "px";
+  greenCar.style.left = greenCarLocation.x + "px";
+}, 2000)
+
 
 
 
@@ -112,35 +121,55 @@ function moveRight() {
 function moveDown() {
   carLocation.y += 30;
   car.style.top = `${carLocation.y}px`;
-  if (carLocation.y <= 0){ 
+  if (carLocation.y <= 0) {
     carLocation.y -= 30;
   }
 }
-
-
-
 let timeLeft = 60;
 const countDown = setInterval(() => {
-  document.querySelector('.timer').textContent = `TIME LEFT: ${timeLeft} seconds`;
+  document.querySelector('.timer').textContent = `${timeLeft} seconds left`;
   timeLeft -= 1;
-  if (timeLeft <= 0) {
-    clearInterval(countDown);
-    document.querySelector('.timer').textContent = `Game Over`
+  if (timeLeft === 0) {
+    window.location.replace("#")
   }
 }, 1000);
 
-const carCrash = function() {
-if (carLocation.x < blueCarLocation.x + parseInt(blueCarLocation.width) &&
-  carLocation.x + parseInt(carLocation.width) > bueCarLocation.x &&
-  carLocation.y < blueCarLocation.y + parseInt(blueCarLocation.height) &&
-  carLocation.y + parseInt(carLocation.height) > blueCarLocation.y) {
-   console.log('crash')
-}
-};
-carCrash();
+  const blueCarCrash = function () {
+  if (carLocation.x < blueCarLocation.x + parseInt(blueCarLocation.width) &&
+    carLocation.x + parseInt(carLocation.width) > blueCarLocation.x &&
+    carLocation.y < blueCarLocation.y + parseInt(blueCarLocation.height) &&
+    carLocation.y + parseInt(carLocation.height) > blueCarLocation.y) {
+    console.log('blue car crash')
+   }
+  };
 
-function gameOver() {
-  if (timeLeft == 0) {
-    alert('Thanks for Playing')
+  const greenCarCrash = function() {
+  if (carLocation.x < greenCarLocation.x + parseInt(greenCarLocation.width) &&
+    carLocation.x + parseInt(carLocation.width) > greenCarLocation.x &&
+    carLocation.y < coinLocation.y + parseInt(greenCarLocation.height) &&
+    carLocation.y + parseInt(carLocation.height) > greenCarLocation.y) {
+    console.log('green car crash')
   }
+};
+
+
+let currentScore = 0;
+   const collectCoin = function () {
+  if (carLocation.x < coinLocation.x + parseInt(coinLocation.width) &&
+    carLocation.x + parseInt(carLocation.width) > coinLocation.x &&
+    carLocation.y < coinLocation.y + parseInt(coinLocation.height) &&
+    carLocation.y + parseInt(carLocation.height) > coinLocation.y) {
+    document.querySelector('.score').textContent = `${currentScore} coins collected`;
+    currentScore += 1;
+  }
+};
+
+window.setInterval(() =>{
+  collectCoin();
+  greenCarCrash();
+  blueCarCrash();
+}, 250)
+
+
 }
+runGame();

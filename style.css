@@ -3,7 +3,6 @@
     display: flex;
     position: relative;
     justify-content: center;
-  
 }
 
 .game-board {
@@ -17,6 +16,7 @@
 .timer {
     flex; 1;
     position: relative;
+    display: inline;
     height: 100px;
     width: 150px;
     opacity: 1;
@@ -32,11 +32,34 @@ animation: move 4s infinite;
 }
 
 .enemy2 {
-    animation: move 5s infinite;
+    animation: move 6s infinite;
 }
 
-@keyframes move {
+ @keyframes move {
     0% {top: -100px;}
+    
     100%{top: 900px;}
+} 
+
+.score {
+    flex; 1;
+    display: inline;
+    position: relative;
+    height: 100px;
+    width: 150px;
+    background-color: black;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    padding: 5px;
 }
 
+/* background gradient generated with mycolor.space */
+.main-container {
+    display: flex;
+    justify-content: center;
+    background-image: url(images/landingpage.png);
+    background-position: center;
+    background-size: cover;
+    height: 800px;
+}
