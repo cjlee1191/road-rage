@@ -9,7 +9,7 @@
     flex: 1;
     justify-content: space-evenly;
     position: relative;
-    height: 100vh;
+    height: 800px;
     width: 100vh;
     background-image: url(images/road.png);
     background-position: center;
@@ -31,18 +31,19 @@
 }
 
 .enemy {
-animation: move 3s infinite;
+width: 100px;
+height: 150px;
 
 }
 
 .enemy2 {
-    animation: move 4s infinite;
+
 }
 
- @keyframes move {
-    0% { top: -50px; }
-    100%{ top: 800px; }
-} 
+ /* @keyframes move {
+    0% { top: 0%; }
+    100%{ top: 100%; }
+}  */ */
 
 .score {
     flex: 1;
@@ -72,7 +73,7 @@ animation: move 3s infinite;
 
 /* generated with cssbuttongenerator.com */
 .reset-button {
-     
+         margin-left: 75px;
         -moz-box-shadow: 0px 25px 33px -7px #276873;
         -webkit-box-shadow: 0px 25px 33px -7px #276873;
         box-shadow: 0px 25px 33px -7px #276873;
@@ -159,16 +160,12 @@ animation: move 3s infinite;
    .home-header {
     font-size: 50px;
     font-weight: 500;
-    
-
-   }
-    
-  h1 {
+}
+h1 {
     font-size: 75px;
     font-weight: 500;
     margin-top: 200px
 }
-
 .main {
     display: flex;
     flex-direction: row;
@@ -178,7 +175,5 @@ animation: move 3s infinite;
     background-position: center;
     background-size: cover;
     height: 100vh
-    
-
 }
 
