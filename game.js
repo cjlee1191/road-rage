@@ -96,7 +96,7 @@ window.setInterval(() => {
   coinLocation.y = Math.floor(Math.random() * documentHeight) + 1;
   coin.style.top = coinLocation.y + "px";
   coin.style.left = coinLocation.x + "px";
-}, 2000);
+}, 2500);
 
 document.body.addEventListener('keydown', (event) => {
   const { keyCode } = event;
@@ -160,8 +160,9 @@ const blueCarCrash = function () {
     blueCar.style.height = '100px';
     blueCar.style.width = '100px';
     car.style.backgroundImage = ("url('images/boom.png')")
-    window.setInterval(() => { window.location.replace('gameover.html');
-  }, 250)
+    window.setInterval(() => {
+      window.location.replace('gameover.html');
+    }, 250)
   }
 };
 const greenCarCrash = function () {
@@ -173,12 +174,13 @@ const greenCarCrash = function () {
     greenCar.style.height = '100px';
     greenCar.style.width = '100px';
     car.style.backgroundImage = ("url('images/boom.png')")
-    window.setInterval(() => { window.location.replace('gameover.html');
+    window.setInterval(() => {
+      window.location.replace('gameover.html');
     }, 100)
   }
 };
 
-
+currentScore = 0;
 const collectCoin = function () {
   if (carLocation.x < coinLocation.x + parseInt(coinLocation.width) &&
     carLocation.x + parseInt(carLocation.width) > coinLocation.x &&
@@ -187,15 +189,15 @@ const collectCoin = function () {
     document.querySelector('.score').textContent = `${currentScore} coins`;
     coin.remove();
     currentScore += 1;
-    
-     }
+
+  }
 
 };
 
 function gameOver() {
-  if (timeLeft === 0){
-  window.location.replace('gameover.html')
- }
+  if (timeLeft === 0) {
+    window.location.replace('gameover.html')
+  }
 }
 
 window.setInterval(() => {

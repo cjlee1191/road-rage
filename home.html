@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,30 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="main">
-        <h1 class= "start">Road Rage</h1>
+        <h1 class="start">Road Rage</h1>
         <button class="start-game"><a href="index.html">Start Game</a></button>
-        <button class="start-game"><a href="tutorial.html">Tutorial</a></button>
+        <button onclick="revealTutorial()" class="start-game"><a>Tutorial</a></button>
+        
+        <p class="tutorial">1. Control the car using the arrow keys. <br>
+                            2. Avoid oncoming cars. Crashing into one ends the game.<br>
+                            3. Collect 10 coins in 60 seconds to win the game.
+        </p>
+
+
+        <script>
+            function revealTutorial() {
+                let tutorial = document.querySelector(".tutorial");
+                if (tutorial.style.display === "none") {
+                    tutorial.style.display = "block";
+                } else {
+                    tutorial.style.display = "none";
+                }
+            }
+        </script>
     </div>
 </body>
+
 </html>

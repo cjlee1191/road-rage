@@ -24,25 +24,30 @@
     height: 100px;
     width: 150px;
     opacity: 1;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 600;
     color: white;
     padding: 5px;
-    border: black solid 2px;
+    border:2px solid #e65f44;
+    font-family: 'VT323', monospace;
+    color:#c92200;
 }
 
 .score {
     flex; 1;
     position: relative;
     display: block;
-    border: black solid 2px;
-    height: 50px;
-    width: 150px;
+    border:2px solid #e65f44;
+    height: 25px;
+    width: 100px;
     opacity: 1;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 600;
     color: white;
     padding: 5px;
+    margin-top: 10px;
+    font-family: 'VT323', monospace;
+    color:#c92200;
 }
 
 .coin {
@@ -69,6 +74,7 @@
 
 /* generated with cssbuttongenerator.com */
 .reset-button {
+    text-decoration: none;
     margin-top: 190px;
 	-moz-box-shadow:inset 3px 1px 25px 0px #f9eca0;
 	-webkit-box-shadow:inset 3px 1px 25px 0px #f9eca0;
@@ -110,6 +116,7 @@
 }
     
     .start-game {
+        text-decoration: none;
         margin-top: 25px;
         margin-bottom: 25px;
         -moz-box-shadow:inset 3px 1px 25px 0px #f9eca0;
@@ -200,4 +207,14 @@ h1 {
     height: 100px;
     width: 100px;
     background-size: cover;
+}
+
+.tutorial {
+    
+    font-family: 'VT323', monospace;
+    background:linear-gradient(to bottom, #f2ab1e 5%, #f0c911 100%);
+    border:2px solid #e65f44;
+    font-size: 18px;
+    display: none;
+
 }
