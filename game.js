@@ -51,7 +51,7 @@ function createBlueCar() {
 createBlueCar();
 const blueInterval = setInterval(function () {
   createBlueCar()
-}, 4000)
+}, 3500)
 
 function createGreenCar() {
   greenCar.style.position = 'absolute';
@@ -80,7 +80,7 @@ createGreenCar();
 
 const greenInterval = setInterval(function () {
   createGreenCar()
-}, 4000)
+}, 3500)
 
 
 window.setInterval(() => {
