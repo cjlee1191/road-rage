@@ -3,6 +3,7 @@ const car = document.createElement('div');
 const coin = document.createElement('div');
 const blueCar = document.createElement('div')
 const greenCar = document.createElement('div')
+const redCar = document.createElement('div')
 const documentHeight = document.documentElement.clientHeight;
 const documentWidth = document.documentElement.clientWidth;
 
@@ -10,6 +11,7 @@ let carLocation = { x: 600, y: 500, height: '150px', width: '100px' };
 let coinLocation = { x: 0, y: 0, height: '100px', width: '100px' };
 let blueCarLocation = { x: 0, y: 0, height: '150px', width: '100px' };
 let greenCarLocation = { x: 0, y: 0, height: '150px', width: '100px' };
+let redCarLocation = { x: 0, y: 0, height: '150px', width: '100px' };
 
 
 const createCar = function () {
@@ -82,6 +84,36 @@ createGreenCar();
 const greenInterval = setInterval(function () {
   createGreenCar()
 }, 3500)
+
+
+function createRedCar() {
+  redCar.style.position = 'absolute';
+  redCar.style.width = '100px';
+  redCar.style.height = '125px';
+  redCar.style.backgroundImage = "url('images/redcar.png')"
+  redCar.style.backgroundSize = '100%';
+  document.body.querySelector('.game-board').appendChild(redCar);
+  redCarLocation.x = Math.floor(Math.random() * documentWidth + 1);
+  redCar.style.left = redCarLocation.x + "px";
+
+  let redPos = 0;
+
+  const moveRedCar = setInterval(frame, 4);
+  function frame() {
+    if (redPos == 800) {
+      redCar.remove();
+      clearInterval(moveRedCar);
+    } else {
+      redPos++;
+      redCar.style.top = redPos + 'px';
+    }
+  }
+}
+createRedCar();
+
+const redInterval = setInterval(function () {
+  createRedCar()
+}, 4000)
 
 
 window.setInterval(() => {
@@ -181,6 +213,21 @@ const greenCarCrash = function () {
   }
 };
 
+const redCarCrash = function () {
+  if (parseInt(car.style.left) < parseInt(redCar.style.left) + parseInt(redCar.style.width) &&
+    parseInt(car.style.left) + parseInt(car.style.width) > parseInt(redCar.style.left) &&
+    parseInt(car.style.top) < parseInt(redCar.style.top) + parseInt(redCar.style.height) &&
+    parseInt(car.style.top) + parseInt(car.style.height) > parseInt(redCar.style.top)) {
+    redCar.style.backgroundImage = ("url('images/boom.png')")
+    redCar.style.height = '100px';
+    redCar.style.width = '100px';
+    car.style.backgroundImage = ("url('images/boom.png')")
+    window.setInterval(() => {
+      window.location.replace('gameover.html');
+    }, 100)
+  }
+};
+
 currentScore = 0;
 const collectCoin = function () {
   if (carLocation.x < coinLocation.x + parseInt(coinLocation.width) &&
@@ -210,6 +257,7 @@ window.setInterval(() => {
   collectCoin();
   greenCarCrash();
   blueCarCrash();
+  redCarCrash();
   gameOver();
   youWin();
 }, 500)
