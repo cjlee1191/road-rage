@@ -6,7 +6,7 @@ const greenCar = document.createElement('div')
 const documentHeight = document.documentElement.clientHeight;
 const documentWidth = document.documentElement.clientWidth;
 
-let carLocation = { x: 600, y: 500, height: '100px', width: '100px' };
+let carLocation = { x: 600, y: 500, height: '150px', width: '100px' };
 let coinLocation = { x: 0, y: 0, height: '100px', width: '100px' };
 let blueCarLocation = { x: 0, y: 0, height: '150px', width: '100px' };
 let greenCarLocation = { x: 0, y: 0, height: '150px', width: '100px' };
@@ -56,13 +56,12 @@ const blueInterval = setInterval(function () {
 function createGreenCar() {
   greenCar.style.position = 'absolute';
   greenCar.style.width = '100px';
-  greenCar.style.height = '175px';
+  greenCar.style.height = '150px';
   greenCar.style.backgroundImage = "url('images/greencar.png')"
   greenCar.style.backgroundSize = '100%';
   document.body.querySelector('.game-board').appendChild(greenCar);
   greenCarLocation.x = Math.floor(Math.random() * documentWidth + 1);
   greenCar.style.left = greenCarLocation.x + "px";
-
 
   let greenPos = 0;
 
@@ -198,13 +197,19 @@ function gameOver() {
   if (timeLeft === 0) {
     window.location.replace('gameover.html')
   }
-}
+} 
 
+function youWin() {
+  if (currentScore >= 10) {
+    window.location.replace('win.html')
+  }
+}
 window.setInterval(() => {
   collectCoin();
   greenCarCrash();
   blueCarCrash();
   gameOver();
+  youWin();
 }, 500)
 
 
