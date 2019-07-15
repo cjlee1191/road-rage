@@ -234,3 +234,10 @@ h1 {
     margin-top: 50px;
     color: #c92200;
 }
+
+.audio {
+   visibility: hidden;
+   width: 0%;
+   height: 0%;
+
+}
