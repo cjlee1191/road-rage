@@ -97,6 +97,7 @@ window.setInterval(() => {
   coin.style.left = coinLocation.x + "px";
 }, 2500);
 
+
 document.body.addEventListener('keydown', (event) => {
   const { keyCode } = event;
   if ([37, 38, 39, 40].includes(keyCode)) {
