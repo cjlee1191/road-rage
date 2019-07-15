@@ -18,6 +18,7 @@ const createCar = function () {
   car.style.top = '500px';
   car.style.width = '100px';
   car.style.height = '100px';
+  car.style.transition ='all .4s';
   car.style.backgroundImage = "url('images/car.png')";
   car.style.backgroundSize = '100px';
   document.body.querySelector('.game-board').appendChild(car);
@@ -141,7 +142,7 @@ function moveRight() {
 function moveDown() {
   carLocation.y += 75;
   car.style.top = `${carLocation.y}px`;
-  if (carLocation.y <= 0) {
+  if (carLocation.y >= 650) {
     carLocation.y -= 75;
   }
 }
