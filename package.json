@@ -4,6 +4,7 @@
   "description": "project1-game",
   "main": "game.js",
   "scripts": {
+    "fix-all": "eslint --fix .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

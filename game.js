@@ -1,17 +1,26 @@
-/*eslint-disable*/
 const car = document.createElement('div');
 const coin = document.createElement('div');
-const blueCar = document.createElement('div')
-const greenCar = document.createElement('div')
-const redCar = document.createElement('div')
+const blueCar = document.createElement('div');
+const greenCar = document.createElement('div');
+const redCar = document.createElement('div');
 const documentHeight = document.documentElement.clientHeight;
 const documentWidth = document.documentElement.clientWidth;
 
-let carLocation = { x: 600, y: 500, height: '150px', width: '100px' };
-let coinLocation = { x: 0, y: 0, height: '100px', width: '100px' };
-let blueCarLocation = { x: 0, y: 0, height: '150px', width: '100px' };
-let greenCarLocation = { x: 0, y: 0, height: '150px', width: '100px' };
-let redCarLocation = { x: 0, y: 0, height: '150px', width: '100px' };
+const carLocation = {
+ x: 600, y: 500, height: '150px', width: '100px' 
+};
+const coinLocation = {
+ x: 0, y: 0, height: '100px', width: '100px' 
+};
+const blueCarLocation = {
+ x: 0, y: 0, height: '150px', width: '100px' 
+};
+const greenCarLocation = {
+ x: 0, y: 0, height: '150px', width: '100px' 
+};
+const redCarLocation = {
+ x: 0, y: 0, height: '150px', width: '100px' 
+};
 
 
 const createCar = function () {
@@ -20,7 +29,7 @@ const createCar = function () {
   car.style.top = '500px';
   car.style.width = '100px';
   car.style.height = '100px';
-  car.style.transition ='all .4s';
+  car.style.transition = 'all .4s';
   car.style.backgroundImage = "url('images/car.png')";
   car.style.backgroundSize = '100px';
   document.body.querySelector('.game-board').appendChild(car);
@@ -33,11 +42,11 @@ function createBlueCar() {
   blueCar.style.height = '150px';
   blueCar.style.width = '100px';
   blueCar.classList.add('.enemy');
-  blueCar.style.backgroundImage = "url('images/bluecar.png')"
+  blueCar.style.backgroundImage = "url('images/bluecar.png')";
   blueCar.style.backgroundSize = '100%';
   document.body.querySelector('.game-board').appendChild(blueCar);
   blueCarLocation.x = Math.floor(Math.random() * documentWidth + 1);
-  blueCar.style.left = blueCarLocation.x + "px";
+  blueCar.style.left = `${blueCarLocation.x  }px`;
 
   let bluePos = 0;
   const moveBlueCar = setInterval(frame, 3);
@@ -47,24 +56,24 @@ function createBlueCar() {
       clearInterval(moveBlueCar);
     } else {
       bluePos++;
-      blueCar.style.top = bluePos + 'px';
+      blueCar.style.top = `${bluePos  }px`;
     }
   }
 }
 createBlueCar();
-const blueInterval = setInterval(function () {
+const blueInterval = setInterval(() => {
   createBlueCar()
-}, 3500)
+}, 3500);
 
 function createGreenCar() {
   greenCar.style.position = 'absolute';
   greenCar.style.width = '100px';
   greenCar.style.height = '150px';
-  greenCar.style.backgroundImage = "url('images/greencar.png')"
+  greenCar.style.backgroundImage = "url('images/greencar.png')";
   greenCar.style.backgroundSize = '100%';
   document.body.querySelector('.game-board').appendChild(greenCar);
   greenCarLocation.x = Math.floor(Math.random() * documentWidth + 1);
-  greenCar.style.left = greenCarLocation.x + "px";
+  greenCar.style.left = `${greenCarLocation.x  }px`;
 
   let greenPos = 0;
 
@@ -75,26 +84,26 @@ function createGreenCar() {
       clearInterval(moveGreenCar);
     } else {
       greenPos++;
-      greenCar.style.top = greenPos + 'px';
+      greenCar.style.top = `${greenPos  }px`;
     }
   }
 }
 createGreenCar();
 
-const greenInterval = setInterval(function () {
+const greenInterval = setInterval(() => {
   createGreenCar()
-}, 3500)
+}, 3500);
 
 
 function createRedCar() {
   redCar.style.position = 'absolute';
   redCar.style.width = '100px';
   redCar.style.height = '125px';
-  redCar.style.backgroundImage = "url('images/redcar.png')"
+  redCar.style.backgroundImage = "url('images/redcar.png')";
   redCar.style.backgroundSize = '100%';
   document.body.querySelector('.game-board').appendChild(redCar);
   redCarLocation.x = Math.floor(Math.random() * documentWidth + 1);
-  redCar.style.left = redCarLocation.x + "px";
+  redCar.style.left = `${redCarLocation.x  }px`;
 
   let redPos = 0;
 
@@ -105,15 +114,15 @@ function createRedCar() {
       clearInterval(moveRedCar);
     } else {
       redPos++;
-      redCar.style.top = redPos + 'px';
+      redCar.style.top = `${redPos  }px`;
     }
   }
 }
 createRedCar();
 
-const redInterval = setInterval(function () {
+const redInterval = setInterval(() => {
   createRedCar()
-}, 4000)
+}, 4000);
 
 
 window.setInterval(() => {
@@ -121,20 +130,20 @@ window.setInterval(() => {
   coin.style.width = '100px';
   coin.style.height = '100px';
   coin.style.backgroundImage = "url('images/coin.png')";
-  coin.classList.add('.coin')
+  coin.classList.add('.coin');
   coin.style.backgroundSize = '100%';
   document.body.querySelector('.game-board').appendChild(coin);
   coinLocation.x = Math.floor(Math.random() * documentWidth) + 1;
   coinLocation.y = Math.floor(Math.random() * documentHeight) + 1;
-  coin.style.top = coinLocation.y + "px";
-  coin.style.left = coinLocation.x + "px";
+  coin.style.top = `${coinLocation.y  }px`;
+  coin.style.left = `${coinLocation.x  }px`;
 }, 2500);
 
 
 document.body.addEventListener('keydown', (event) => {
   const { keyCode } = event;
   if ([37, 38, 39, 40].includes(keyCode)) {
-    event.preventDefault()
+    event.preventDefault();
   }
   if (keyCode === 37) {
     moveLeft();
@@ -185,72 +194,70 @@ const countDown = setInterval(() => {
 }, 1000);
 
 const blueCarCrash = function () {
-  if (parseInt(car.style.left) < parseInt(blueCar.style.left) + parseInt(blueCar.style.width) &&
-    parseInt(car.style.left) + parseInt(car.style.width) > parseInt(blueCar.style.left) &&
-    parseInt(car.style.top) < parseInt(blueCar.style.top) + parseInt(blueCar.style.height) &&
-    parseInt(car.style.top) + parseInt(car.style.height) > parseInt(blueCar.style.top)) {
-    blueCar.style.backgroundImage = ("url('images/boom.png')")
+  if (parseInt(car.style.left) < parseInt(blueCar.style.left) + parseInt(blueCar.style.width)
+    && parseInt(car.style.left) + parseInt(car.style.width) > parseInt(blueCar.style.left)
+    && parseInt(car.style.top) < parseInt(blueCar.style.top) + parseInt(blueCar.style.height)
+    && parseInt(car.style.top) + parseInt(car.style.height) > parseInt(blueCar.style.top)) {
+    blueCar.style.backgroundImage = ("url('images/boom.png')");
     blueCar.style.height = '100px';
     blueCar.style.width = '100px';
-    car.style.backgroundImage = ("url('images/boom.png')")
+    car.style.backgroundImage = ("url('images/boom.png')");
     window.setInterval(() => {
       window.location.replace('gameover.html');
-    }, 250)
+    }, 250);
   }
 };
 const greenCarCrash = function () {
-  if (parseInt(car.style.left) < parseInt(greenCar.style.left) + parseInt(greenCar.style.width) &&
-    parseInt(car.style.left) + parseInt(car.style.width) > parseInt(greenCar.style.left) &&
-    parseInt(car.style.top) < parseInt(greenCar.style.top) + parseInt(greenCar.style.height) &&
-    parseInt(car.style.top) + parseInt(car.style.height) > parseInt(greenCar.style.top)) {
-    greenCar.style.backgroundImage = ("url('images/boom.png')")
+  if (parseInt(car.style.left) < parseInt(greenCar.style.left) + parseInt(greenCar.style.width)
+    && parseInt(car.style.left) + parseInt(car.style.width) > parseInt(greenCar.style.left)
+    && parseInt(car.style.top) < parseInt(greenCar.style.top) + parseInt(greenCar.style.height)
+    && parseInt(car.style.top) + parseInt(car.style.height) > parseInt(greenCar.style.top)) {
+    greenCar.style.backgroundImage = ("url('images/boom.png')");
     greenCar.style.height = '100px';
     greenCar.style.width = '100px';
-    car.style.backgroundImage = ("url('images/boom.png')")
+    car.style.backgroundImage = ("url('images/boom.png')");
     window.setInterval(() => {
       window.location.replace('gameover.html');
-    }, 100)
+    }, 100);
   }
 };
 
 const redCarCrash = function () {
-  if (parseInt(car.style.left) < parseInt(redCar.style.left) + parseInt(redCar.style.width) &&
-    parseInt(car.style.left) + parseInt(car.style.width) > parseInt(redCar.style.left) &&
-    parseInt(car.style.top) < parseInt(redCar.style.top) + parseInt(redCar.style.height) &&
-    parseInt(car.style.top) + parseInt(car.style.height) > parseInt(redCar.style.top)) {
-    redCar.style.backgroundImage = ("url('images/boom.png')")
+  if (parseInt(car.style.left) < parseInt(redCar.style.left) + parseInt(redCar.style.width)
+    && parseInt(car.style.left) + parseInt(car.style.width) > parseInt(redCar.style.left)
+    && parseInt(car.style.top) < parseInt(redCar.style.top) + parseInt(redCar.style.height)
+    && parseInt(car.style.top) + parseInt(car.style.height) > parseInt(redCar.style.top)) {
+    redCar.style.backgroundImage = ("url('images/boom.png')");
     redCar.style.height = '100px';
     redCar.style.width = '100px';
-    car.style.backgroundImage = ("url('images/boom.png')")
+    car.style.backgroundImage = ("url('images/boom.png')");
     window.setInterval(() => {
       window.location.replace('gameover.html');
-    }, 100)
+    }, 100);
   }
 };
 
-currentScore = 0;
+let currentScore = 0;
 const collectCoin = function () {
-  if (carLocation.x < coinLocation.x + parseInt(coinLocation.width) &&
-    carLocation.x + parseInt(carLocation.width) > coinLocation.x &&
-    carLocation.y < coinLocation.y + parseInt(coinLocation.height) &&
-    carLocation.y + parseInt(carLocation.height) > coinLocation.y) {
+  if (carLocation.x < coinLocation.x + parseInt(coinLocation.width)
+    && carLocation.x + parseInt(carLocation.width) > coinLocation.x
+    && carLocation.y < coinLocation.y + parseInt(coinLocation.height)
+    && carLocation.y + parseInt(carLocation.height) > coinLocation.y) {
     document.querySelector('.score').textContent = `${currentScore} coins`;
     coin.remove();
     currentScore += 1;
-
   }
-
 };
 
 function gameOver() {
   if (timeLeft === 0) {
-    window.location.replace('gameover.html')
+    window.location.replace('gameover.html');
   }
-} 
+}
 
 function youWin() {
   if (currentScore >= 10) {
-    window.location.replace('win.html')
+    window.location.replace('win.html');
   }
 }
 window.setInterval(() => {
@@ -260,8 +267,4 @@ window.setInterval(() => {
   redCarCrash();
   gameOver();
   youWin();
-}, 500)
-
-
-
-
+}, 500);

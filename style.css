@@ -1,4 +1,3 @@
-/*eslint-disable*/
 /* images taken from opengameart.org*/
 
 .container {
@@ -14,7 +13,10 @@
     height: 800px;
     width: 100vh;
     background-image: url(images/road.png);
-    background-position: center;
+    background-size: 100%;
+    background-position: 0px 0px;
+    background-repeat: repeat-y;
+    animation: movingBackground 4s linear infinite;
 }
 .game-board > .score {
     justify-self: center;
@@ -49,7 +51,7 @@
     padding: 5px;
     margin-top: 10px;
     font-family: 'VT323', monospace;
-    color:#c92200;
+    color: #c92200;
 }
 
 .coin {
@@ -160,6 +162,7 @@
         top:1px;
     }
     }
+    
 
    .home-header {
     font-size: 50px;
@@ -240,4 +243,13 @@ h1 {
    width: 0%;
    height: 0%;
 
+}
+
+@keyframes movingBackground {
+    from { 
+        background-position: 0 0; 
+    }
+    to {
+        background-position: 0 -100%; 
+    }
 }
